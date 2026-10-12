@@ -4,7 +4,7 @@ env:
 steps:
   - label: ":playwright: Playwright tests"
     command: |
-      export BUILDKITE_ANALYTICS_TOKEN=$$(buidkite-agent secret get TEST_SUIT_TOKEN)
+      export BUILDKITE_ANALYTICS_TOKEN=$$(buidkite-agent secret get TEST_SUITE_TOKEN)
       echo $BUILDKITE_ANALYTICS_TOKEN
       npm install
       npx playwright install chromium
