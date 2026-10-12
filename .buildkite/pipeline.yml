@@ -3,13 +3,16 @@ env:
 
 steps:
   - label: ":playwright: Playwright tests"
-    command: |
-      BUILDKITE_ANALYTICS_TOKEN=$$(buildkite-agent secret get TEST_SUITE_TOKEN)
-      echo $$(buildkite-agent secret get TEST_SUITE_TOKEN)
-      export $BUILDKITE_ANALYTICS_TOKEN
-      npm install
-      npx playwright install chromium
-      npx playwright test
+    command: cat << YAML | buildkite-agent upload
+    steps:
+      - command: |    
+        BUILDKITE_ANALYTICS_TOKEN=$$(buildkite-agent secret get TEST_SUITE_TOKEN)
+        echo $$(buildkite-agent secret get TEST_SUITE_TOKEN)
+        export $BUILDKITE_ANALYTICS_TOKEN
+        npm install
+        npx playwright install chromium
+        npx playwright test
+    YAML
     # Run the suite in parallel jobs to show per-job results in Test Engine
     parallelism: 2
     agents:
