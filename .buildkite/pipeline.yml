@@ -1,0 +1,13 @@
+env:
+  CI: "true"
+
+steps:
+  - label: ":playwright: Playwright tests"
+    command: |
+      npm install
+      npx playwright install chromium
+      npx playwright test
+    # Run the suite in parallel jobs to show per-job results in Test Engine
+    parallelism: 2
+    agents:
+      queue: "default"

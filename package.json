@@ -1,0 +1,14 @@
+{
+  "name": "test-engine-playwright-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tiny todo app with a Playwright suite that reports to Buildkite Test Engine",
+  "scripts": {
+    "start": "node server.js",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "buildkite-test-collector": "^1.8.0"
+  }
+}
